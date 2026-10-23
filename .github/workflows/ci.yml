@@ -90,10 +90,8 @@ jobs:
         shell: pwsh
         run: python tools/smoke_v2.py --step decide --load .tmp/space_index.json
 
-      - name: 维护者 v2 审计（空间索引 / 决策 / 授权 / 回收站 / 迁移）
-        # qa/lead_audit_v2.py：要求会话对 D:/E: 有写权限（GitHub Windows runner 满足）。
-        shell: pwsh
-        run: python qa/lead_audit_v2.py
+      # 说明：qa/lead_audit_v2.py 会真实全盘扫描 C:\\（开发机 <90s），在 GitHub runner 上需要 10 分钟以上，
+      # 因此不在 CI 运行；维护者可在开发机用 tools/verify.ps1 跑这套 v2 审计。
 
       - name: 文档相对链接检查
         shell: pwsh
