@@ -365,11 +365,11 @@ qingfeng-cleaner/
 │  ├─ faq.md                   # 常见问题
 │  ├─ research/                # 调研 / 落地映射 / 红队复审 / 空间分析笔记
 │  └─ images/                  # README 用的真实截图
-├─ qa/                         # 维护者用：独立安全审计，CI 可选跑
+├─ qa/                         # 维护者用：独立安全审计（lead_audit.py 在 CI 跑，v2 审计在开发机跑）
 │  ├─ lead_audit.py            # v1 规则/安全边界审计
 │  ├─ lead_audit_v2.py         # v2 空间索引/决策/授权/回收站/迁移审计（需完整权限会话）
 │  └─ smoke_clean.py           # 受控目录上的清理冒烟测试
-├─ .github/workflows/ci.yml    # CI：unittest + v2 审计 + 扫描冒烟 + 死链 + 可选打包
+├─ .github/workflows/ci.yml    # CI：unittest + 扫描冒烟 + v2 冒烟 + 死链 + 可选打包
 ├─ README.md  LICENSE  .gitignore  CONTRIBUTING.md
 ```
 
