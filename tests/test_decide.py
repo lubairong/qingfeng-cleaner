@@ -48,14 +48,29 @@ def _review_item_for(path: str, *, is_dir: bool = False) -> decide.ReviewItem:
     )
 
 
-def _fake_cross_drive(dest_root: str):
-    """把 dest_root 伪装成 D: 盘、其它路径保持真实盘符。"""
+def _fake_drive_for(dest_root: str) -> str:
+    """挑一个与 dest_root 真实盘符不同的假盘符。
+
+    CI（GitHub Windows runner）的工作区位于 D:，若这里硬编码成 D:，
+    假盘符会与源文件的真实盘符相同，跨盘逻辑就不会被触发，测试会误报"同盘"。
+    """
+    real_drive = str(decide._drive_of(str(dest_root))).upper()
+    for candidate in ("Z:", "Y:", "X:", "W:", "V:", "U:"):
+        if candidate != real_drive:
+            return candidate
+    return "Z:"
+
+
+def _fake_cross_drive(dest_root: str, fake_drive: str | None = None):
+    """把 dest_root 伪装成 fake_drive 盘、其它路径保持真实盘符。"""
+    if fake_drive is None:
+        fake_drive = _fake_drive_for(dest_root)
     dest_norm = os.path.normcase(str(dest_root))
     real = decide._drive_of
 
     def fake(path: str) -> str:
         if os.path.normcase(str(path)).startswith(dest_norm):
-            return "D:"
+            return fake_drive
         return real(path)
 
     return fake
@@ -70,7 +85,11 @@ class _MovePatches:
 
     def __enter__(self):
         self._patches = [
-            mock.patch.object(decide, "_drive_of", side_effect=_fake_cross_drive(self.dest_root)),
+            mock.patch.object(
+                decide,
+                "_drive_of",
+                side_effect=_fake_cross_drive(self.dest_root, _fake_drive_for(self.dest_root)),
+            ),
             mock.patch.object(decide, "_is_fixed_drive", return_value=True),
             mock.patch.object(decide, "_dest_free_bytes", return_value=self.free_bytes),
         ]
