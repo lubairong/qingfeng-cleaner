@@ -88,7 +88,25 @@ def run_scan_only(rules_dir: Path | None) -> int:
     return 0
 
 
+def _configure_stdio() -> None:
+    """把标准输出/错误统一为 UTF-8，避免非中文代码页的环境下打印中文崩溃。
+
+    英文 Windows（cp1252）或 CI 里把输出重定向到管道时，Python 默认用本地代码页，
+    ``print`` 中文会抛 ``UnicodeEncodeError``。这里统一改 UTF-8，并对无法编码的
+    字符降级替换，保证 ``--scan-only`` 这类只读用法永远不因编码失败。
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        try:
+            reconfigure(encoding="utf-8", errors="replace")
+        except (ValueError, OSError):
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _configure_stdio()
     parser = argparse.ArgumentParser(
         prog="qingfeng",
         description=f"{APP_NAME} {APP_NAME_EN} — Windows C 盘清理工具",

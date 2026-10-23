@@ -18,6 +18,10 @@ jobs:
     name: 单元测试 + 扫描冒烟（Python 3.12 / Windows）
     runs-on: windows-latest
     timeout-minutes: 20
+    env:
+      # runner 默认代码页不是 UTF-8：强制 Python 输出 UTF-8，避免中文打印崩溃
+      PYTHONIOENCODING: "utf-8"
+      PYTHONUTF8: "1"
 
     steps:
       - name: 检出代码
@@ -43,6 +47,7 @@ jobs:
         # 只扫描不删除：退出码必须为 0，且输出中包含磁盘可用信息。
         shell: pwsh
         run: |
+          [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
           $out = python main.py --scan-only 2>&1 | Out-String
           Write-Host $out
           if ($LASTEXITCODE -ne 0) { throw "--scan-only 退出码非 0: $LASTEXITCODE" }
@@ -83,6 +88,9 @@ jobs:
     needs: test
     # 打包失败不阻塞 CI（例如 PyPI 不可达）；本地交付以 packaging/build.ps1 为准。
     continue-on-error: true
+    env:
+      PYTHONIOENCODING: "utf-8"
+      PYTHONUTF8: "1"
 
     steps:
       - name: 检出代码
@@ -110,6 +118,7 @@ jobs:
       - name: 验证目录版产物（推荐分发版本）
         shell: pwsh
         run: |
+          [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
           $exe = "dist/QingFengCleaner-onedir/QingFengCleaner.exe"
           if (-not (Test-Path $exe)) { throw "未生成 $exe" }
           if (-not (Test-Path "dist/QingFengCleaner-onedir/_internal/qingfeng/data/rules/system.json")) {
@@ -136,6 +145,7 @@ jobs:
       - name: 验证启动器 bat 可运行
         shell: pwsh
         run: |
+          [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
           $out = & "./dist/启动清风清理.bat" --scan-only 2>&1 | Out-String
           Write-Host $out
           if ($LASTEXITCODE -ne 0) { throw "启动器 --scan-only 退出码非 0: $LASTEXITCODE" }
