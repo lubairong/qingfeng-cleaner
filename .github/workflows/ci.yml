@@ -64,9 +64,27 @@ jobs:
         shell: pwsh
         run: python qa/lead_audit.py
 
-      - name: v2 空间索引冒烟（只读扫 C:，断言可访问字节 > 0）
+      - name: v2 空间索引冒烟（合成 100MB+ 样本，断言可访问字节 > 0）
+        # 不在 CI 里全盘扫 C:：GitHub runner 上真实 C: 扫描会超过 10 分钟（本地约 20s）。
+        # 这里用合成目录做确定性验证，真实磁盘路径由开发机上的 tools/verify.ps1 覆盖。
         shell: pwsh
-        run: python tools/smoke_v2.py --step index --save .tmp/space_index.json --max-seconds 300
+        run: |
+          @'
+          import pathlib
+          root = pathlib.Path(".tmp/v2root")
+          samples = (
+              ("Downloads/big-setup.exe", 120),
+              ("Downloads/archive.zip", 110),
+              ("media/movie.mkv", 150),
+          )
+          for rel, size_mb in samples:
+              path = root / rel
+              path.parent.mkdir(parents=True, exist_ok=True)
+              with open(path, "wb") as fh:
+                  fh.truncate(size_mb * 1024 * 1024)
+          print("synthetic samples ready")
+          '@ | python -
+          python tools/smoke_v2.py --step index --drive ".tmp\\v2root" --save .tmp/space_index.json --max-seconds 60
 
       - name: v2 决策冒烟（大文件分组 / 授权矩阵 / 迁移目标）
         shell: pwsh
