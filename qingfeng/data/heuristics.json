@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-22",
+  "source": "researcher space-heuristics.json 基线合并（14 分类 / 3 age_rules / 18 never_touch）",
+  "categories": [
+    {
+      "key": "installer",
+      "label": "安装包 / 升级残留",
+      "match": "all",
+      "exts": [".exe", ".msi", ".msix", ".appx", ".msixbundle", ".appxbundle"],
+      "path_globs": [
+        "*\\Downloads\\*.exe",
+        "*\\Downloads\\*.msi",
+        "*\\@*-updater\\*",
+        "*\\*-updater\\*",
+        "*\\*-updater\\pending\\*",
+        "*\\ProgramData\\Intel\\DSA\\Downloads\\*",
+        "*\\ProgramData\\*\\Package Cache\\*",
+        "*\\ProgramData\\*\\Update\\*",
+        "*\\User Data\\updates\\*",
+        "*\\*更新包*.exe",
+        "*\\AppData\\Local\\Temp\\*.exe",
+        "*\\AppData\\Local\\Temp\\*.msi"
+      ],
+      "advice": "safe_delete",
+      "risk": "caution",
+      "reason": "升级/安装过程留下的安装包（{age} 天未修改），装完通常可删；拿不准就迁移到 D/E 盘"
+    },
+    {
+      "key": "backup",
+      "label": "备份 / 旧副本",
+      "match": "any",
+      "exts": [".bak", ".old", ".backup", ".orig"],
+      "path_globs": [
+        "*\\GreenCore7z\\*\\*.7z",
+        "*\\GreenCore\\*\\*.7z",
+        "*\\OneKey Driver\\*.bak",
+        "*\\*\\OneKey Driver\\*.bak",
+        "*\\*backup*\\*",
+        "*\\*.bak"
+      ],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "升级前的备份/旧副本（{age} 天前），确认不需要回滚或恢复后可清理、或迁移到 D/E 盘"
+    },
+    {
+      "key": "app-version-dup",
+      "label": "程序的旧版本副本",
+      "match": "any",
+      "exts": [],
+      "path_globs": [
+        "*\\Microsoft\\EdgeCore\\*",
+        "*\\Microsoft\\EdgeWebView\\*",
+        "*\\Microsoft\\Copilot\\*",
+        "*\\Microsoft\\Edge\\Application\\*",
+        "*\\GreenCore\\*",
+        "*\\Optimized\\*",
+        "*\\*_old\\*"
+      ],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "程序旧版本/组件副本（{age} 天前的版本），确认当前版本运行正常后可删；删除需要管理员权限"
+    },
+    {
+      "key": "devcache",
+      "label": "开发缓存 / 构建产物",
+      "match": "any",
+      "exts": [".pyc", ".obj", ".pdb"],
+      "path_globs": [
+        "*\\node_modules\\*",
+        "*\\target\\debug\\*",
+        "*\\target\\release\\*",
+        "*\\.gradle\\*",
+        "*\\.cargo\\*",
+        "*\\.npm\\*",
+        "*\\npm-cache\\*",
+        "*\\pip\\cache\\*",
+        "*\\.nuget\\*",
+        "*\\.m2\\*",
+        "*\\ms-playwright\\*",
+        "*\\.venv\\*"
+      ],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "开发/构建缓存（{age} 天未使用），删除后下次构建会重新生成（会变慢）"
+    },
+    {
+      "key": "app-cache",
+      "label": "应用缓存（大文件）",
+      "match": "any",
+      "exts": [".tmp", ".cache", ".log"],
+      "path_globs": [
+        "*\\AppData\\Local\\*\\Cache*",
+        "*\\AppData\\Roaming\\*\\Cache*",
+        "*\\AppData\\Local\\*\\GPUCache\\*",
+        "*\\AppData\\Local\\*\\Code Cache\\*",
+        "*\\AppData\\Local\\*\\Service Worker\\*",
+        "*\\AppData\\Local\\Temp\\*"
+      ],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "应用自身缓存（{size}），「清理」页可安全清理；不想清就忽略它"
+    },
+    {
+      "key": "video",
+      "label": "视频 / 录屏",
+      "match": "any",
+      "exts": [".mp4", ".mkv", ".mov", ".avi", ".wmv", ".flv", ".webm", ".m4v", ".ts", ".m2ts"],
+      "path_globs": [],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "视频/录屏文件（{size}），建议迁移到 D/E 盘而不是删除"
+    },
+    {
+      "key": "archive",
+      "label": "压缩包",
+      "match": "any",
+      "exts": [".zip", ".rar", ".7z", ".tar", ".gz", ".xz", ".bz2", ".tgz"],
+      "path_globs": [],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "压缩包（{size}），确认内容已解压或已备份后可删，否则建议迁移"
+    },
+    {
+      "key": "vm",
+      "label": "虚拟机磁盘 / 系统镜像",
+      "match": "any",
+      "exts": [".vhd", ".vhdx", ".vmdk", ".qcow2", ".ova", ".vdi", ".iso"],
+      "path_globs": [],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "虚拟机磁盘或系统镜像（{size}），建议迁移到 D/E 盘保留，不要直接删除"
+    },
+    {
+      "key": "driver-package",
+      "label": "驱动安装包缓存",
+      "match": "any",
+      "exts": [".inf", ".cab"],
+      "path_globs": [
+        "*\\ProgramData\\Intel\\Package Cache*",
+        "*\\ProgramData\\Huawei\\Driver\\*",
+        "*\\NVIDIA\\*\\*.*.*\\*"
+      ],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "驱动安装包缓存（{size}），确认设备工作正常后可删；DriverStore 请用 pnputil/驱动管理器处理"
+    },
+    {
+      "key": "model-db",
+      "label": "模型 / 数据库 / 聊天数据（建议保留）",
+      "match": "any",
+      "exts": [".gguf", ".safetensors", ".onnx", ".db", ".sqlite", ".sqlite3", ".db-wal", ".db-shm", ".mdb", ".ldb"],
+      "path_globs": [
+        "*\\Ollama\\*",
+        "*\\.ollama\\*",
+        "*\\WeChat Files\\*",
+        "*\\xwechat_files\\*",
+        "*\\Tencent Files\\*",
+        "*\\models\\*"
+      ],
+      "advice": "keep",
+      "risk": "danger",
+      "reason": "模型/数据库/聊天数据（{size}），删除可能丢数据；空间紧张时建议迁移而不是删除"
+    },
+    {
+      "key": "personal",
+      "label": "个人文件（建议保留 / 迁移）",
+      "match": "any",
+      "exts": [".pdf", ".docx", ".doc", ".pptx", ".ppt", ".xlsx", ".xls", ".jpg", ".jpeg", ".png", ".psd", ".txt", ".md"],
+      "path_globs": [
+        "*\\Desktop\\*",
+        "*\\Documents\\*",
+        "*\\Pictures\\*",
+        "*\\Downloads\\*"
+      ],
+      "advice": "keep",
+      "risk": "caution",
+      "reason": "个人文件（{size}），建议保留；要腾空间请迁移到 D/E 盘，不要删除"
+    },
+    {
+      "key": "program",
+      "label": "已安装程序（请勿手动删除）",
+      "match": "any",
+      "exts": [".dll", ".exe", ".node", ".bin", ".dat", ".pyd"],
+      "path_globs": [
+        "*\\Program Files\\*",
+        "*\\Program Files (x86)\\*",
+        "*\\AppData\\Local\\Programs\\*",
+        "*\\AppData\\Local\\*\\app\\*",
+        "*\\AppData\\Roaming\\*\\Application\\*",
+        "*\\Tencent\\*",
+        "*\\Roaming\\npm\\*"
+      ],
+      "advice": "keep",
+      "risk": "danger",
+      "reason": "已安装程序的运行时文件（{size}），删除会导致程序无法运行；请走卸载程序"
+    },
+    {
+      "key": "system-media",
+      "label": "系统文件 / 旧系统",
+      "match": "any",
+      "exts": [],
+      "path_globs": [
+        "*\\hiberfil.sys",
+        "*\\pagefile.sys",
+        "*\\swapfile.sys",
+        "*\\DumpStack.log.tmp",
+        "*\\Windows.old\\*",
+        "*\\$Recycle.Bin\\*"
+      ],
+      "advice": "keep",
+      "risk": "danger",
+      "reason": "系统文件（{size}），请用设置页 / DISM / powercfg 处理，不要直接删除"
+    },
+    {
+      "key": "large-misc",
+      "label": "其它大文件（你来判断）",
+      "match": "any",
+      "exts": [],
+      "path_globs": [],
+      "advice": "review",
+      "risk": "caution",
+      "reason": "未识别的大文件（{size}，{age} 天未修改），建议先打开位置确认用途，再决定迁移或删除"
+    }
+  ],
+  "age_rules": [
+    {
+      "min_size": 1073741824,
+      "min_age_days": 365,
+      "advice": "review",
+      "reason": "超过 1 年未修改：先确认是否还需要，再迁移或清理"
+    },
+    {
+      "min_size": 536870912,
+      "min_age_days": 180,
+      "advice": "review",
+      "reason": "半年以上未修改：大概率是残留或冷数据，可迁移到 D/E 盘"
+    },
+    {
+      "min_size": 104857600,
+      "min_age_days": 730,
+      "advice": "review",
+      "reason": "两年未使用的大文件：建议迁移或清理"
+    }
+  ],
+  "never_touch": [
+    "*\\Windows\\*",
+    "*\\Windows.old\\*",
+    "*\\$Recycle.Bin\\*",
+    "*\\System Volume Information\\*",
+    "*\\Recovery\\*",
+    "*\\EFI\\*",
+    "*\\Boot\\*",
+    "*\\$WinREAgent\\*",
+    "*\\$Windows.~BT\\*",
+    "*\\$Windows.~WS\\*",
+    "*\\AppData\\Local\\Packages\\*",
+    "*\\Program Files\\WindowsApps\\*",
+    "*\\ProgramData\\Microsoft\\Windows Defender\\*",
+    "*\\NTUSER.DAT*",
+    "*\\ntuser.dat*",
+    "*\\pagefile.sys",
+    "*\\hiberfil.sys",
+    "*\\swapfile.sys"
+  ]
+}

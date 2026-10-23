@@ -1,0 +1,77 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+MANIFEST
+
+# ---- 虚拟环境 ----
+.venv/
+venv/
+env/
+ENV/
+
+# ---- PyInstaller / 打包中间产物（dist 产物不入库，发 Release 用）----
+packaging/build/
+packaging/dist/
+packaging/_pyinstaller/
+*.spec
+*.spec.bak
+
+# ---- 测试与覆盖率 ----
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# ---- 测试 / QA 临时产物（不要提交测试生成的临时目录）----
+tests/_tmp/
+.stale-test-tmp/
+.stale-*-tmp/
+# qa/ 审计脚本会在仓库根目录临时创建 .qa_* 目录（跑完自删，这里防意外残留）
+.qa_*/
+qa/.qa_*/
+qa/_out/
+qf_audit_*
+
+# ---- 运行时临时文件 ----
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+assets/_shot.png
+assets/_preview_*.png
+docs/images/_*.png
+tools/_verify_out/
+# v2 冒烟/截图临时产物（索引 json、localappdata 模拟缓存目录等）
+.tmp/
+.tmp-localappdata/
+space_index.json
+verify-report.txt
+.scan-report.txt
+tmp/
+.cache/
+
+# ---- 编辑器 / IDE ----
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# ---- 操作系统 ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

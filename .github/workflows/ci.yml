@@ -1,0 +1,154 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: 单元测试 + 扫描冒烟（Python 3.12 / Windows）
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 环境信息
+        shell: pwsh
+        run: |
+          python --version
+          python -c "import sys, tkinter; print('exe:', sys.executable); print('tkinter:', tkinter.TkVersion)"
+
+      # 本项目零第三方依赖（仅 Python 3.12 标准库 + tkinter），无需 pip install -r requirements.txt。
+      - name: 单元测试
+        shell: pwsh
+        run: python -m unittest discover -s tests -v
+
+      - name: --scan-only 冒烟测试
+        # 只扫描不删除：退出码必须为 0，且输出中包含磁盘可用信息。
+        shell: pwsh
+        run: |
+          $out = python main.py --scan-only 2>&1 | Out-String
+          Write-Host $out
+          if ($LASTEXITCODE -ne 0) { throw "--scan-only 退出码非 0: $LASTEXITCODE" }
+          if ($out -notmatch "C 盘可用") { throw "--scan-only 输出缺少 'C 盘可用'" }
+
+      - name: --version 与 --help 冒烟测试
+        shell: pwsh
+        run: |
+          python main.py --version
+          python main.py --help
+
+      - name: 维护者安全审计（规则集 / 保护路径 / 引擎契约）
+        # qa/lead_audit.py：29 项独立审计，任何一项失败都视为破坏安全红线。
+        shell: pwsh
+        run: python qa/lead_audit.py
+
+      - name: v2 空间索引冒烟（只读扫 C:，断言可访问字节 > 0）
+        shell: pwsh
+        run: python tools/smoke_v2.py --step index --save .tmp/space_index.json --max-seconds 300
+
+      - name: v2 决策冒烟（大文件分组 / 授权矩阵 / 迁移目标）
+        shell: pwsh
+        run: python tools/smoke_v2.py --step decide --load .tmp/space_index.json
+
+      - name: 维护者 v2 审计（空间索引 / 决策 / 授权 / 回收站 / 迁移）
+        # qa/lead_audit_v2.py：要求会话对 D:/E: 有写权限（GitHub Windows runner 满足）。
+        shell: pwsh
+        run: python qa/lead_audit_v2.py
+
+      - name: 文档相对链接检查
+        shell: pwsh
+        run: python tools/check_links.py
+
+  package:
+    name: PyInstaller 打包（可选）
+    runs-on: windows-latest
+    timeout-minutes: 25
+    needs: test
+    # 打包失败不阻塞 CI（例如 PyPI 不可达）；本地交付以 packaging/build.ps1 为准。
+    continue-on-error: true
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 打包（默认只构建目录版）
+        shell: pwsh
+        run: ./packaging/build.ps1
+
+      - name: 验证交付结构（目录版 + 启动 bat，无单文件 exe）
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "dist/QingFengCleaner-onedir/QingFengCleaner.exe")) { throw "未生成目录版 exe" }
+          if (Test-Path "dist/QingFengCleaner.exe") { throw "dist 根目录不应出现单文件 exe（v2.1 起不交付）" }
+          if (-not (Test-Path "dist/启动清风清理.bat")) { throw "缺少启动器 dist/启动清风清理.bat" }
+          $bat = Get-Content "dist/启动清风清理.bat" -Raw
+          if ($bat -notmatch "QingFengCleaner-onedir\\\\QingFengCleaner\\.exe") { throw "启动器未指向目录版 exe" }
+          Write-Host "交付结构 OK：QingFengCleaner-onedir\ + 启动清风清理.bat"
+
+      - name: 验证目录版产物（推荐分发版本）
+        shell: pwsh
+        run: |
+          $exe = "dist/QingFengCleaner-onedir/QingFengCleaner.exe"
+          if (-not (Test-Path $exe)) { throw "未生成 $exe" }
+          if (-not (Test-Path "dist/QingFengCleaner-onedir/_internal/qingfeng/data/rules/system.json")) {
+            throw "目录版缺少内置规则库（--add-data 未生效）"
+          }
+          if (-not (Test-Path "dist/QingFengCleaner-onedir/_internal/qingfeng/data/heuristics.json")) {
+            throw "目录版缺少 v2 分类词典 heuristics.json（--add-data 未生效）"
+          }
+          $out = & $exe --scan-only 2>&1 | Out-String
+          Write-Host $out
+          if ($LASTEXITCODE -ne 0) { throw "目录版 --scan-only 退出码非 0: $LASTEXITCODE" }
+          if ($out -notmatch "可安全清理合计") { throw "目录版 --scan-only 输出缺少汇总行" }
+
+      - name: 验证目录版空间透视页可启动
+        shell: pwsh
+        run: |
+          $exe = "dist/QingFengCleaner-onedir/QingFengCleaner.exe"
+          $p = Start-Process -FilePath $exe -ArgumentList @("--no-tray", "--page", "space") -PassThru
+          Start-Sleep -Seconds 8
+          if ($p.HasExited) { throw "目录版 --page space 在 8 秒内退出（退出码 $($p.ExitCode)）" }
+          Stop-Process -Id $p.Id -Force
+          Write-Host "空间透视页存活 8s"
+
+      - name: 验证启动器 bat 可运行
+        shell: pwsh
+        run: |
+          $out = & "./dist/启动清风清理.bat" --scan-only 2>&1 | Out-String
+          Write-Host $out
+          if ($LASTEXITCODE -ne 0) { throw "启动器 --scan-only 退出码非 0: $LASTEXITCODE" }
+          if ($out -notmatch "可安全清理合计") { throw "启动器 --scan-only 输出缺少汇总行" }
+          ./.venv/Scripts/python.exe tools/smoke_v2.py --step decide --load .tmp/space_index.json | Out-Null
+
+      - name: 上传构建产物
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: QingFengCleaner-windows
+          path: |
+            dist/QingFengCleaner-onedir/
+            dist/启动清风清理.bat
+          if-no-files-found: ignore
+          retention-days: 14

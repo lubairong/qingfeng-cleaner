@@ -1,0 +1,116 @@
+name: 🐞 Bug 报告
+description: 报告崩溃、界面异常、扫描/清理结果不符合预期等问题
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！清风清理**默认只扫描不删除**，请先确认问题不是「预期行为」。
+
+        提交前建议先跑一遍只扫描模式，并把输出贴到下面：
+
+        ```bat
+        python main.py --scan-only
+        ```
+
+        注意：请**不要**粘贴包含个人隐私的完整路径（如用户名、文档名），可用 `<用户名>` 代替。
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 问题描述
+      description: 发生了什么？你期望发生什么？
+      placeholder: |
+        实际：
+        期望：
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 按顺序列出操作步骤，越具体越好。
+      placeholder: |
+        1. 运行 python main.py
+        2. 点击「开始扫描」
+        3. 勾选「用户临时文件」
+        4. 点击「清理」后……
+    validations:
+      required: true
+
+  - type: input
+    id: os-version
+    attributes:
+      label: Windows 版本
+      description: 例如 Windows 11 23H2 22631.4169（在「设置 → 系统 → 系统信息」中查看）
+      placeholder: Windows 11 23H2 22631.4169
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: 清风清理版本
+      description: 运行 `python main.py --version`，或 exe 版在「设置 → 关于」里查看
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: run-mode
+    attributes:
+      label: 运行方式
+      options:
+        - 源码运行（python main.py）
+        - 源码运行（python main.py --scan-only）
+        - 打包版 exe（dist/QingFengCleaner.exe）
+        - 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: admin
+    attributes:
+      label: 是否以管理员身份运行
+      options:
+        - 否（普通用户）
+        - 是（管理员）
+        - 不确定
+    validations:
+      required: true
+
+  - type: textarea
+    id: scan-output
+    attributes:
+      label: 扫描结果 / 控制台输出
+      description: 粘贴 `python main.py --scan-only` 的输出，或崩溃时的完整报错栈。
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图
+      description: |
+        直接把图片拖到这里即可上传。建议包含：
+        1. 主窗口完整截图（能看到磁盘占用条与规则列表）
+        2. 报错弹窗 / 异常界面
+        3. 托盘图标（如果问题与托盘相关）
+      placeholder: 拖拽或粘贴截图到此处……
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 我已搜索过现有 Issue，确认没有重复。
+          required: true
+        - label: 我使用的是最新版本，且问题可以稳定复现。
+          required: true
+        - label: 我理解清风清理默认走回收站删除，文件可在回收站还原。
+          required: false

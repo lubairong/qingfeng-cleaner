@@ -1,0 +1,4 @@
+# 此目录存放 README 与文档用截图（PNG）。
+# 由 packaging-qa 在阶段 B 用真实运行界面截图填充：
+#   main.png  主窗口（扫描结果 + 规则列表）
+#   tray.png  系统托盘右键菜单

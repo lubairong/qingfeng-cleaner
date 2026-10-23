@@ -1,0 +1,714 @@
+{
+ "scanned_at": "2026-10-22 19:24:38",
+ "duration_sec": 19.8,
+ "grand_total_bytes": 95357234190,
+ "top_level": [
+  [
+   "C:/Users",
+   39492992278
+  ],
+  [
+   "C:/Windows",
+   37965835968
+  ],
+  [
+   "C:/Program Files (x86)",
+   8492732849
+  ],
+  [
+   "C:/Program Files",
+   4897120239
+  ],
+  [
+   "C:/ProgramData",
+   4500955407
+  ],
+  [
+   "C:/游戏盒子steam",
+   7342628
+  ],
+  [
+   "C:/tmp",
+   103440
+  ],
+  [
+   "C:/$SysReset",
+   57344
+  ],
+  [
+   "C:/360SANDBOX",
+   36864
+  ],
+  [
+   "C:/$Recycle.Bin",
+   28565
+  ],
+  [
+   "C:/Intel",
+   19652
+  ],
+  [
+   "C:/360Safe",
+   8956
+  ],
+  [
+   "C:/Documents and Settings",
+   0
+  ],
+  [
+   "C:/inetpub",
+   0
+  ],
+  [
+   "C:/MSOCache",
+   0
+  ],
+  [
+   "C:/PerfLogs",
+   0
+  ],
+  [
+   "C:/Recovery",
+   0
+  ],
+  [
+   "C:/System Volume Information",
+   0
+  ]
+ ],
+ "level2_top": [
+  [
+   "C:\\/Windows/WinSxS",
+   15422042140
+  ],
+  [
+   "C:\\/Windows/System32",
+   3690032883
+  ],
+  [
+   "C:\\/Program Files/Huawei",
+   1357407866
+  ],
+  [
+   "C:\\/Users/HUAWEI",
+   1267074720
+  ],
+  [
+   "C:\\/Windows/SysWOW64",
+   1218943343
+  ],
+  [
+   "C:\\/Windows/Installer",
+   813092307
+  ],
+  [
+   "C:\\/Windows/SystemApps",
+   772406440
+  ],
+  [
+   "C:\\/Windows/Fonts",
+   675862218
+  ],
+  [
+   "C:\\/ProgramData/Package Cache",
+   531752046
+  ],
+  [
+   "C:\\/Windows/Logs",
+   386185699
+  ],
+  [
+   "C:\\/Windows/servicing",
+   371188330
+  ],
+  [
+   "C:\\/Program Files/Intel",
+   323479612
+  ],
+  [
+   "C:\\/Windows/CbsTemp",
+   293711286
+  ],
+  [
+   "C:\\/ProgramData/Intel Package Cache {1CEAC85D-2590-4760-800F-8DE5E91F3700}",
+   287593672
+  ],
+  [
+   "C:\\/ProgramData/Comms",
+   202134871
+  ],
+  [
+   "C:\\/Windows/SystemResources",
+   197975110
+  ],
+  [
+   "C:\\/ProgramData/SGAIAssistant",
+   118305405
+  ],
+  [
+   "C:\\/Program Files (x86)/360",
+   106340806
+  ],
+  [
+   "C:\\/Windows/INF",
+   95264895
+  ],
+  [
+   "C:\\/Windows/InputMethod",
+   92441193
+  ],
+  [
+   "C:\\/Windows/Panther",
+   66298669
+  ],
+  [
+   "C:\\/Windows/SoftwareDistribution",
+   57938675
+  ],
+  [
+   "C:\\/Windows/Globalization",
+   55077795
+  ],
+  [
+   "C:\\/Program Files/Windows Defender",
+   49656014
+  ],
+  [
+   "C:\\/ProgramData/USOPrivate",
+   47202304
+  ],
+  [
+   "C:\\/Windows/Boot",
+   42592295
+  ],
+  [
+   "C:\\/ProgramData/Windows Master Store",
+   37820794
+  ],
+  [
+   "C:\\/Program Files (x86)/Common Files",
+   28719983
+  ],
+  [
+   "C:\\/Windows/UUS",
+   28303434
+  ],
+  [
+   "C:\\/Windows/Media",
+   24491623
+  ],
+  [
+   "C:\\/Windows/ImmersiveControlPanel",
+   21765201
+  ],
+  [
+   "C:\\/ProgramData/Intel",
+   21084456
+  ],
+  [
+   "C:\\/Windows/apppatch",
+   18439460
+  ],
+  [
+   "C:\\/Windows/ShellExperiences",
+   15161344
+  ],
+  [
+   "C:\\/Windows/OriginalDriver",
+   13515928
+  ],
+  [
+   "C:\\/Windows/Cursors",
+   11501377
+  ],
+  [
+   "C:\\/Windows/InboxApps",
+   9949606
+  ],
+  [
+   "C:\\/Windows/Web",
+   7071042
+  ],
+  [
+   "C:\\/Windows/Help",
+   6387062
+  ],
+  [
+   "C:\\/Windows/ShellComponents",
+   5938176
+  ]
+ ],
+ "level3_top": [],
+ "big_files_top": [
+  {
+   "path": "C:/ProgramData\\Intel\\DSA\\Downloads\\gfx_win_101.7092.exe",
+   "size": 780899944,
+   "mtime": 1792643128.9448073,
+   "atime": 1792643128.9448073
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\.workbuddy\\workbuddy.db-wal",
+   "size": 774036792,
+   "mtime": 1791792671.218952,
+   "atime": 1791792671.218952
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\.workbuddy\\workbuddy.db-wal",
+   "size": 774036792,
+   "mtime": 1791792671.218952,
+   "atime": 1791792671.218952
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\rocm_v7_1\\ggml-hip.dll",
+   "size": 749073288,
+   "mtime": 1780918324.0,
+   "atime": 1783699488.1281693
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12\\cublasLt64_12.dll",
+   "size": 692449672,
+   "mtime": 1780918310.0,
+   "atime": 1783699488.1036613
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\@genieworkbuddy-desktop-updater\\installer.exe",
+   "size": 512454048,
+   "mtime": 1783514660.6452115,
+   "atime": 1783692305.1407838
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v13\\cublasLt64_13.dll",
+   "size": 477894536,
+   "mtime": 1780918316.0,
+   "atime": 1783699488.1086612
+  },
+  {
+   "path": "C:/Program Files\\Tencent\\Weixin\\4.1.15.13\\RadiumWMPF.bin",
+   "size": 432405783,
+   "mtime": 1789501780.0,
+   "atime": 1792667418.9719684
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\@mmx-agentelectron-updater\\installer.exe",
+   "size": 427486456,
+   "mtime": 1781689203.9826062,
+   "atime": 1783590043.5430157
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\@mmx-agentelectron-updater\\pending\\MiniMax Code Setup 3.0.46.exe",
+   "size": 427486456,
+   "mtime": 1781689203.9826062,
+   "atime": 1783590043.5506463
+  },
+  {
+   "path": "C:/ProgramData\\Huawei\\Driver\\OneKey Driver\\boot.bak",
+   "size": 403836132,
+   "mtime": 1724315438.0,
+   "atime": 1783699543.7253363
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12\\ggml-cuda.dll",
+   "size": 371256200,
+   "mtime": 1780918312.0,
+   "atime": 1783699488.1036613
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\Copilot\\Application\\155.0.4283.62\\msedge.dll",
+   "size": 353102192,
+   "mtime": 1792116369.0198257,
+   "atime": 1792643449.3219886
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\EdgeCore\\155.0.4283.62\\msedge.dll",
+   "size": 353102192,
+   "mtime": 1792116369.0198257,
+   "atime": 1792643449.3219886
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\GreenCore7z\\15.2.6387.0\\chrome.7z",
+   "size": 352669437,
+   "mtime": 1739352878.0,
+   "atime": 1783699503.711963
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\greencore\\softmgr\\secore\\chrome.7z",
+   "size": 348593426,
+   "mtime": 1729224900.0,
+   "atime": 1783699503.709944
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Quark\\User Data\\updates\\1907d4869a59a88b0aefaba85f47b42b.exe",
+   "size": 346838768,
+   "mtime": 1783362247.6638548,
+   "atime": 1783830608.1979437
+  },
+  {
+   "path": "C:/Windows\\Logs\\CBS\\CbsPersist_20261022061023.log",
+   "size": 342326546,
+   "mtime": 1792647258.7074294,
+   "atime": 1792647258.7074294
+  },
+  {
+   "path": "C:/Windows\\Logs\\CBS\\CbsPersist_20261022061023.log",
+   "size": 342326546,
+   "mtime": 1792647258.7074294,
+   "atime": 1792647258.7074294
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\Edge\\Application\\150.0.4078.65\\msedge.dll",
+   "size": 331412296,
+   "mtime": 1783597544.4950316,
+   "atime": 1784826752.390166
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\EdgeCore\\150.0.4078.65\\msedge.dll",
+   "size": 331412296,
+   "mtime": 1783597544.4950316,
+   "atime": 1792642555.8437872
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\EdgeCore\\Optimized\\msedge.dll",
+   "size": 331412296,
+   "mtime": 1783597544.4950316,
+   "atime": 1792642555.8437872
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\150.0.4078.65\\msedge.dll",
+   "size": 331412296,
+   "mtime": 1783597544.4950316,
+   "atime": 1792642555.8437872
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\Edge\\Application\\150.0.4078.48\\msedge.dll",
+   "size": 331316040,
+   "mtime": 1782962438.28436,
+   "atime": 1783739579.6778848
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\EdgeCore\\150.0.4078.48\\msedge.dll",
+   "size": 331316040,
+   "mtime": 1782962438.28436,
+   "atime": 1783866231.6479788
+  },
+  {
+   "path": "C:/Windows\\System32\\Microsoft-Edge-WebView\\msedge.dll",
+   "size": 324041072,
+   "mtime": 1784104250.7810583,
+   "atime": 1791793930.687257
+  },
+  {
+   "path": "C:/Windows\\WinSxS\\amd64_microsoft-edge-webview_31bf3856ad364e35_10.0.26100.8875_none_2e8b57ef3adeca43\\msedge.dll",
+   "size": 324041072,
+   "mtime": 1784104250.7810583,
+   "atime": 1784112535.0287347
+  },
+  {
+   "path": "C:/Windows\\System32\\Microsoft-Edge-WebView\\msedge.dll",
+   "size": 324041072,
+   "mtime": 1784104250.7810583,
+   "atime": 1791793930.687257
+  },
+  {
+   "path": "C:/Windows\\WinSxS\\amd64_microsoft-edge-webview_31bf3856ad364e35_10.0.26100.8875_none_2e8b57ef3adeca43\\msedge.dll",
+   "size": 324041072,
+   "mtime": 1784104250.7810583,
+   "atime": 1784112535.0287347
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Feishu\\app\\frame.dll",
+   "size": 321887632,
+   "mtime": 1780679310.9602518,
+   "atime": 1783699472.8020399
+  },
+  {
+   "path": "C:/Windows\\WinSxS\\amd64_microsoft-edge-webview_31bf3856ad364e35_10.0.26100.8655_none_2e9ef7333ad05fb3\\msedge.dll",
+   "size": 318642544,
+   "mtime": 1781074175.0749466,
+   "atime": 1781288901.1859274
+  },
+  {
+   "path": "C:/Windows\\WinSxS\\amd64_microsoft-edge-webview_31bf3856ad364e35_10.0.26100.8655_none_2e9ef7333ad05fb3\\msedge.dll",
+   "size": 318642544,
+   "mtime": 1781074175.0749466,
+   "atime": 1781288901.1859274
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\.codex\\plugins\\.plugin-appserver\\codex.exe",
+   "size": 318210352,
+   "mtime": 1781953347.9742239,
+   "atime": 1781953456.0572999
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\OpenAI\\Codex\\bin\\8e55c2dd143b6354\\codex.exe",
+   "size": 318210352,
+   "mtime": 1781953347.9742239,
+   "atime": 1781958027.9374332
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\doxent\\读写笔记PC端更新包.exe",
+   "size": 295644520,
+   "mtime": 1780763557.000637,
+   "atime": 1783590043.2907574
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\obsidian-updater\\installer.exe",
+   "size": 295530200,
+   "mtime": 1776657696.0,
+   "atime": 1783590043.6762197
+  },
+  {
+   "path": "C:/Windows\\CbsTemp\\decompressed.wim_{A9AB62E5-AC8C-4E2A-8FE0-B8FDE7963F21}",
+   "size": 293711286,
+   "mtime": 1792668002.6351712,
+   "atime": 1792668002.6351712
+  },
+  {
+   "path": "C:/Windows\\CbsTemp\\decompressed.wim_{A9AB62E5-AC8C-4E2A-8FE0-B8FDE7963F21}",
+   "size": 293711286,
+   "mtime": 1792668002.6351712,
+   "atime": 1792668002.6351712
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\@deepseek-aidsh-desktop-updater\\installer.exe",
+   "size": 289385456,
+   "mtime": 1792642387.0151055,
+   "atime": 1792642538.198211
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\ms-playwright\\chromium-1223\\chrome-win64\\chrome.dll",
+   "size": 282986496,
+   "mtime": 1780470949.5160625,
+   "atime": 1783699478.3372033
+  },
+  {
+   "path": "C:/Windows\\WinSxS\\amd64_microsoft-edge-webview_31bf3856ad364e35_10.0.26100.1_none_8fe1c356f34a19ca\\msedge.dll",
+   "size": 263562688,
+   "mtime": 1711005540.0,
+   "atime": 1775109692.2866118
+  },
+  {
+   "path": "C:/Windows\\WinSxS\\amd64_microsoft-edge-webview_31bf3856ad364e35_10.0.26100.1_none_8fe1c356f34a19ca\\msedge.dll",
+   "size": 263562688,
+   "mtime": 1711005540.0,
+   "atime": 1775109692.2866118
+  },
+  {
+   "path": "C:/ProgramData\\Intel Package Cache {1CEAC85D-2590-4760-800F-8DE5E91F3700}\\Setup.exe",
+   "size": 260264496,
+   "mtime": 1685579646.4021177,
+   "atime": 1792642643.3565054
+  },
+  {
+   "path": "C:/ProgramData\\Intel Package Cache {1CEAC85D-2590-4760-800F-8DE5E91F3700}\\Setup.exe",
+   "size": 260264496,
+   "mtime": 1685579646.4021177,
+   "atime": 1792642643.3565054
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\Tencent\\xwechat\\XPlugin\\Plugins\\RadiumWMPF\\26504\\extracted\\runtime\\flue.dll",
+   "size": 257344552,
+   "mtime": 1792668161.0677812,
+   "atime": 1792668161.0677812
+  },
+  {
+   "path": "C:/ProgramData\\CNKI E-Study\\configfile\\Update\\08FA6D369326D43393FCDEBCC320A1F1CNKIE-Study7.0.0.exe",
+   "size": 255189080,
+   "mtime": 1779700793.9126093,
+   "atime": 1781419201.3192284
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Feishu\\app\\liblark.dll",
+   "size": 254090640,
+   "mtime": 1780679317.31661,
+   "atime": 1783699472.8113103
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\Programs\\DeepSeek Harness\\DeepSeek Harness.exe",
+   "size": 246343144,
+   "mtime": 1792228850.0,
+   "atime": 1792642837.8810973
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\Desktop\\经济法学（第三版） (《经济法学》编写组) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+   "size": 244503942,
+   "mtime": 1780830414.674983,
+   "atime": 1784798870.027946
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\Desktop\\经济法学（第三版） (《经济法学》编写组) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+   "size": 244503942,
+   "mtime": 1780830414.674983,
+   "atime": 1784798870.027946
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\bin\\claude.exe",
+   "size": 239007904,
+   "mtime": 1780517303.0072925,
+   "atime": 1781412367.9821796
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\node_modules\\@anthropic-ai\\claude-code-win32-x64\\claude.exe",
+   "size": 239007904,
+   "mtime": 1780517303.0072925,
+   "atime": 1780944828.3522384
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\Tencent\\xwechat\\XPlugin\\Plugins\\RadiumWMPF\\25715\\extracted\\runtime\\flue.dll",
+   "size": 237162032,
+   "mtime": 1792667454.1681213,
+   "atime": 1792667454.1681213
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\xyz.chatboxapp.app-updater\\installer.exe",
+   "size": 228599680,
+   "mtime": 1781363442.1487455,
+   "atime": 1781419521.903164
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Local\\xyz.chatboxapp.app-updater\\pending\\Chatbox-1.21.1-Setup.exe",
+   "size": 228599680,
+   "mtime": 1781363442.1487455,
+   "atime": 1781416504.8353622
+  },
+  {
+   "path": "C:/Users\\HUAWEI\\AppData\\Roaming\\Tencent\\WXWork\\cef\\4.1.90.5115\\cef\\libcef.dll",
+   "size": 227789136,
+   "mtime": 1747053311.316898,
+   "atime": 1783699533.836921
+  },
+  {
+   "path": "C:/Program Files\\Huawei\\Cloud\\libcef.dll",
+   "size": 216558960,
+   "mtime": 1780342575.4666011,
+   "atime": 1791793750.4253626
+  },
+  {
+   "path": "C:/Program Files\\Huawei\\Cloud\\libcef.dll",
+   "size": 216558960,
+   "mtime": 1780342575.4666011,
+   "atime": 1791793750.4253626
+  },
+  {
+   "path": "C:/Windows\\System32\\MRT.exe",
+   "size": 214534944,
+   "mtime": 1761174430.9066105,
+   "atime": 1791793723.2519863
+  },
+  {
+   "path": "C:/Windows\\System32\\MRT.exe",
+   "size": 214534944,
+   "mtime": 1761174430.9066105,
+   "atime": 1791793723.2519863
+  },
+  {
+   "path": "C:/Program Files (x86)\\Microsoft\\Copilot\\Application\\undocked_copilot\\Installer\\msedge.7z",
+   "size": 212265696,
+   "mtime": 1792114984.5274854,
+   "atime": 1792643414.9979627
+  }
+ ],
+ "big_files_total_bytes": 20917532934,
+ "big_files_count": 61,
+ "system_probes": {
+  "hiberfil.sys": 6756286464,
+  "swapfile.sys": 268435456,
+  "windows_old": {
+   "exists": false,
+   "path": "C:/Windows.old"
+  },
+  "winsxs": {
+   "exists": true,
+   "path": "C:/Windows/WinSxS"
+  },
+  "installer_cache": {
+   "exists": true,
+   "path": "C:/Windows/Installer"
+  },
+  "downloads": {
+   "exists": true,
+   "path": "C:\\Users\\HUAWEI\\Downloads"
+  },
+  "appdata_local": {
+   "exists": true,
+   "path": "C:\\Users\\HUAWEI\\AppData\\Local"
+  },
+  "temp": {
+   "exists": true,
+   "path": "C:\\Users\\HUAWEI\\AppData\\Local\\Temp"
+  },
+  "wsl": {
+   "exists": true,
+   "path": "C:\\Users\\HUAWEI\\AppData\\Local\\Packages"
+  },
+  "docker": {
+   "exists": false,
+   "path": "C:\\Users\\HUAWEI\\AppData\\Local\\Docker"
+  },
+  "recycle_e": {
+   "exists": true,
+   "path": "E:/$Recycle.Bin"
+  },
+  "recycle_c": {
+   "exists": true,
+   "path": "C:/$Recycle.Bin"
+  },
+  "evtx": {
+   "exists": true,
+   "path": "C:/Windows/System32/winevt/Logs"
+  },
+  "softwaredistribution": {
+   "exists": true,
+   "path": "C:/Windows/SoftwareDistribution"
+  },
+  "driver_store": {
+   "exists": true,
+   "path": "C:/Windows/System32/DriverStore"
+  },
+  "fonts": {
+   "exists": true,
+   "path": "C:/Windows/Fonts"
+  }
+ },
+ "errors": [
+  "C:/$Recycle.Bin\\S-1-5-18: PermissionError",
+  "C:/Documents and Settings: PermissionError",
+  "C:/PerfLogs: PermissionError",
+  "C:/MSOCache: PermissionError",
+  "C:/System Volume Information: PermissionError",
+  "C:/Recovery: PermissionError",
+  "C:/Windows\\appcompat\\AIDD: PermissionError",
+  "C:/Windows\\appcompat\\appraiser: PermissionError",
+  "C:/Windows\\appcompat\\Backup: PermissionError",
+  "C:/Windows\\appcompat\\Programs: PermissionError",
+  "C:/Windows\\appcompat\\UA: PermissionError",
+  "C:/Windows\\LiveKernelReports: PermissionError",
+  "C:/Windows\\Logs\\SystemRestore: PermissionError",
+  "C:/Windows\\Microsoft\\Windows\\Models: PermissionError",
+  "C:/Windows\\Minidump: PermissionError",
+  "C:/Windows\\ModemLogs: PermissionError",
+  "C:/Windows\\PLA\\Reports: PermissionError",
+  "C:/Windows\\PLA\\Rules: PermissionError",
+  "C:/Windows\\PLA\\Templates: PermissionError",
+  "C:/Windows\\Prefetch: PermissionError",
+  "C:/Windows\\Provisioning\\Autopilot: PermissionError",
+  "C:/Windows\\Resources\\Themes\\aero\\VSCache: PermissionError",
+  "C:/Windows\\security\\audit: PermissionError",
+  "C:/Windows\\security\\cap: PermissionError",
+  "C:/Windows\\ServiceProfiles\\IntelTelemetryAgent: PermissionError",
+  "C:/Windows\\ServiceProfiles\\LocalService: PermissionError",
+  "C:/Windows\\ServiceProfiles\\NetworkService: PermissionError",
+  "C:/Windows\\ServiceState: PermissionError",
+  "C:/ProgramData\\Comms\\HwOsd\\admin: PermissionError",
+  "C:/ProgramData\\Comms\\PCManager\\AccessoryCenter\\Download: PermissionError",
+  "C:/ProgramData\\Comms\\PCManager\\AuthData: PermissionError",
+  "C:/ProgramData\\Comms\\PCManager\\log\\admin: PermissionError",
+  "C:/ProgramData\\Huawei\\HMSCORE\\cache: PermissionError",
+  "C:/ProgramData\\Huawei\\HMSCORE\\ha\\work: PermissionError",
+  "C:/ProgramData\\Huawei\\HMSCORE\\log\\admin: PermissionError",
+  "C:/ProgramData\\Huawei\\HMSCORE\\log\\hmswucs: PermissionError",
+  "C:/ProgramData\\Intel\\Connectivity: PermissionError",
+  "C:/ProgramData\\Microsoft\\Crypto\\PCPKSP\\WindowsAIK: PermissionError",
+  "C:/ProgramData\\Microsoft\\Crypto\\PCPKSP\\WindowsEK: PermissionError",
+  "C:/ProgramData\\Microsoft\\Diagnosis: PermissionError"
+ ]
+}
