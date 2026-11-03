@@ -1,0 +1,22 @@
+name: superagent-dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to comment on
+        required: true
+      body:
+        description: Request text for dsh-superagent
+        required: true
+permissions:
+  issues: write
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment as the automation bot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ inputs.issue_number }}
+          BODY: ${{ inputs.body }}
+        run: gh issue comment "$ISSUE" --repo "${{ github.repository }}" --body "$BODY"
