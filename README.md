@@ -1,5 +1,7 @@
 # 清风清理 · QingFeng Cleaner
 
+本项目正在试用 dsh-superagent 自动处理工单。
+
 > **一个开源、可审计、零第三方依赖的 Windows 11 C 盘工具：清理已知缓存 + 空间透视 + 大文件决策 + 迁移到 D/E 盘。默认只扫描不删除，删除走回收站。**
 
 <!-- GitHub 仓库：https://github.com/lubairong/qingfeng-cleaner -->
